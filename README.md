@@ -16,11 +16,11 @@ by Alexander Puglisi
 > Status: early development. Nothing to download yet: the first release will come with a signed installer.
 
 <p align="center">
-  <img src="docs/screenshots/sign.jpg" alt="PenMark: a file just signed" width="49%">
-  <img src="docs/screenshots/verify-valid.jpg" alt="PenMark: a valid signature" width="49%">
+  <img src="docs/screenshots/sign.png" alt="PenMark: a file just signed" width="49%">
+  <img src="docs/screenshots/verify-valid.png" alt="PenMark: a valid signature" width="49%">
 </p>
 <p align="center">
-  <img src="docs/screenshots/verify-changed.jpg" alt="PenMark: a file changed after signing" width="70%">
+  <img src="docs/screenshots/verify-changed.png" alt="PenMark: a file changed after signing" width="70%">
 </p>
 <p align="center"><sub>Real screenshots of the app on Windows 11.</sub></p>
 
