@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256">
+  <title>PenMark</title>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="#160d2c"/>
+  <path d="M58 150c22-46 38-62 46-46s-8 46 12 38 20-58 36-50-4 46 16 42 20-20 30-24" fill="none" stroke="#ff8fc6" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
