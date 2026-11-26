@@ -15,7 +15,7 @@ const MAX_KEY_FILE: u64 = 16 * 1024;
 /// What can go wrong while handling the stored key.
 #[derive(Debug, Error)]
 pub enum KeyStoreError {
-    /// A key is already there. Penmark never replaces it.
+    /// A key is already there. PenMark never replaces it.
     #[error("a signing key already exists in {0}")]
     AlreadyExists(PathBuf),
     /// No key has been created yet.
@@ -52,10 +52,10 @@ impl KeyStore {
         Self { dir: dir.into() }
     }
 
-    /// The usual place: `%LOCALAPPDATA%\Penmark\keys`.
+    /// The usual place: `%LOCALAPPDATA%\PenMark\keys`.
     pub fn default_location() -> Result<Self> {
         let base = std::env::var_os("LOCALAPPDATA").ok_or(KeyStoreError::NoLocation)?;
-        Ok(Self::at(PathBuf::from(base).join("Penmark").join("keys")))
+        Ok(Self::at(PathBuf::from(base).join("PenMark").join("keys")))
     }
 
     /// The folder used by this store.
@@ -111,7 +111,7 @@ impl KeyStore {
         let content = read_limited(&path)?;
         let sealed = content
             .strip_prefix(MAGIC)
-            .ok_or_else(|| KeyStoreError::Corrupt("not a Penmark key file".into()))?;
+            .ok_or_else(|| KeyStoreError::Corrupt("not a PenMark key file".into()))?;
         let seed = dpapi::unprotect(sealed).map_err(KeyStoreError::Locked)?;
         let seed: &[u8; 32] = seed[..]
             .try_into()

@@ -1,5 +1,5 @@
 //! Thin wrapper around `CryptProtectData` / `CryptUnprotectData`.
-//! This is the only place in Penmark that calls the Windows API directly.
+//! This is the only place in PenMark that calls the Windows API directly.
 
 #![allow(unsafe_code)]
 
@@ -12,8 +12,8 @@ use windows_sys::Win32::Security::Cryptography::{
 use zeroize::Zeroizing;
 
 /// Extra secret mixed in by DPAPI: a blob sealed for another program with the
-/// same Windows account cannot be opened as a Penmark key, and vice versa.
-const ENTROPY: &[u8] = b"Penmark signing key v1";
+/// same Windows account cannot be opened as a PenMark key, and vice versa.
+const ENTROPY: &[u8] = b"PenMark signing key v1";
 
 fn blob(data: &[u8]) -> io::Result<CRYPT_INTEGER_BLOB> {
     let len = u32::try_from(data.len())

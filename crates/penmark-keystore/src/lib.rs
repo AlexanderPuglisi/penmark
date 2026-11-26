@@ -1,4 +1,4 @@
-//! Keeps the Penmark signing key on disk, encrypted with the Windows account
+//! Keeps the PenMark signing key on disk, encrypted with the Windows account
 //! of the person using the PC (DPAPI, current-user scope).
 //!
 //! - The secret seed is never written in clear and never leaves this PC.

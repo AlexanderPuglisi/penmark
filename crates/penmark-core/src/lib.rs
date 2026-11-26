@@ -1,4 +1,4 @@
-//! Penmark core: hash a file, sign it with an Ed25519 key and verify it later.
+//! PenMark core: hash a file, sign it with an Ed25519 key and verify it later.
 //!
 //! The signature covers the whole saved file (its SHA-256), the author name,
 //! the public key, the time on the PC clock, an optional link to the previous
