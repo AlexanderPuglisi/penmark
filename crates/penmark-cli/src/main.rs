@@ -13,11 +13,11 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
-/// Penmark — firma quello che crei e dimostra che è tuo. by Alexander Puglisi
+/// PenMark — firma quello che crei e dimostra che è tuo. by Alexander Puglisi
 #[derive(Parser)]
 #[command(name = "penmark", version, about)]
 struct Cli {
-    /// Cartella della chiave (di solito %LOCALAPPDATA%\Penmark\keys).
+    /// Cartella della chiave (di solito %LOCALAPPDATA%\PenMark\keys).
     #[arg(long, global = true, value_name = "CARTELLA")]
     keys: Option<PathBuf>,
 

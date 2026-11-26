@@ -1,6 +1,6 @@
 [package]
 name = "penmark-cli"
-description = "Sign and verify files with Penmark"
+description = "Sign and verify files with PenMark"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
