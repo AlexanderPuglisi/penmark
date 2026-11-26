@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/penmark-core", "crates/penmark-keystore"]
+members = ["crates/penmark-cli","crates/penmark-core", "crates/penmark-keystore"]
 
 [workspace.package]
 version = "0.1.0"
