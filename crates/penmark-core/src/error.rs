@@ -7,7 +7,7 @@ pub enum Error {
     #[error("I/O error: {0}")]
     Io(#[from] std::io::Error),
 
-    /// A `.penmark` file is malformed or not a Penmark signature.
+    /// A `.penmark` file is malformed or not a PenMark signature.
     #[error("invalid .penmark file: {0}")]
     Format(String),
 
