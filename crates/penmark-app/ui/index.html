@@ -8,15 +8,12 @@
 <script src="app.js" defer></script>
 </head>
 <body>
-<div class="sky" aria-hidden="true">
-  <div class="sky-sun"></div>
-  <div class="sky-cyan"></div>
-  <div class="sky-horizon"></div>
-</div>
-
-<div class="drag-edge" data-tauri-drag-region></div>
-
 <div class="shell">
+  <div class="sky" aria-hidden="true">
+    <div class="sky-sun"></div>
+    <div class="sky-cyan"></div>
+    <div class="sky-horizon"></div>
+  </div>
   <div class="titlebar" data-tauri-drag-region>
     <div class="win-controls">
       <button type="button" class="win-btn" id="win-min" aria-label="Riduci a icona" title="Riduci a icona">
@@ -206,5 +203,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   </main>
 </div>
+<!-- Bordi per ridimensionare la finestra senza cornice di Windows -->
+<div class="rz rz-n" data-resize="North" aria-hidden="true"></div>
+<div class="rz rz-s" data-resize="South" aria-hidden="true"></div>
+<div class="rz rz-e" data-resize="East" aria-hidden="true"></div>
+<div class="rz rz-w" data-resize="West" aria-hidden="true"></div>
+<div class="rz rz-ne" data-resize="NorthEast" aria-hidden="true"></div>
+<div class="rz rz-nw" data-resize="NorthWest" aria-hidden="true"></div>
+<div class="rz rz-se" data-resize="SouthEast" aria-hidden="true"></div>
+<div class="rz rz-sw" data-resize="SouthWest" aria-hidden="true"></div>
 </body>
 </html>

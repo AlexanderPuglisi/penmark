@@ -213,6 +213,11 @@ function wire() {
     $("win-max").setAttribute("aria-label", max ? "Ripristina" : "Ingrandisci");
     $("win-max").title = max ? "Ripristina" : "Ingrandisci";
   };
+  for (const h of document.querySelectorAll("[data-resize]")) {
+    h.addEventListener("mousedown", (e) => {
+      if (e.button === 0) { e.preventDefault(); win.startResizeDragging(h.dataset.resize); }
+    });
+  }
   win.onResized(syncMax);
   syncMax();
 

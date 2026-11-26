@@ -23,7 +23,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }
 body {
-  background: var(--night);
+  background: transparent;
   color: var(--text);
   font-family: "Inter", "Segoe UI", system-ui, sans-serif;
   font-size: 14px;
@@ -37,7 +37,7 @@ input, .key-hex, .facts dd, .result-meta, .chosen-path { user-select: text; }
 .mono { font-family: var(--mono); }
 
 /* Cielo */
-.sky { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.sky { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
 .sky-sun { position: absolute; left: -10%; right: -10%; bottom: -55%; height: 100%;
   background: radial-gradient(closest-side, rgba(255,92,170,0.55), rgba(140,70,255,0.28) 55%, rgba(7,5,15,0) 100%); }
 .sky-cyan { position: absolute; right: -180px; top: -220px; width: 620px; height: 620px;
@@ -47,14 +47,15 @@ input, .key-hex, .facts dd, .result-meta, .chosen-path { user-select: text; }
 
 /* Guscio in vetro */
 .shell {
-  position: fixed; inset: 24px;
+  /* La finestra è trasparente: il suo bordo visibile è questa carta. */
+  position: fixed; inset: 0;
   display: grid; grid-template-columns: 232px minmax(0, 1fr);
   border-radius: 26px; overflow: hidden;
-  background: var(--glass);
+  background: linear-gradient(180deg, #120c24 0%, #07050f 55%);
   border: 1px solid var(--line);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
-  backdrop-filter: blur(28px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
 }
+.shell > .side, .shell > .main { position: relative; z-index: 1; }
 .shell::before { /* filo luminoso sul bordo alto */
   content: ""; position: absolute; left: 40px; right: 40px; top: 0; height: 1px;
   background: linear-gradient(90deg, rgba(255,140,200,0), rgba(255,140,200,0.55), rgba(127,232,255,0.55), rgba(127,232,255,0));
@@ -193,8 +194,6 @@ input[type="text"]:focus { border-color: rgba(127,232,255,0.6); outline: none; b
 #key-create { align-self: flex-start; }
 
 /* Cornice: niente barra di Windows, la carta di vetro è il bordo */
-.drag-edge { position: fixed; inset: 0; z-index: 0; }
-.shell { z-index: 1; }
 .titlebar { position: absolute; left: 232px; right: 0; top: 0; height: 40px; z-index: 5;
   display: flex; justify-content: flex-end; align-items: flex-start; }
 .win-controls { display: flex; gap: 6px; padding: 10px 12px 0 0; }
@@ -203,7 +202,18 @@ input[type="text"]:focus { border-color: rgba(127,232,255,0.6); outline: none; b
 .win-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: var(--text); }
 .win-btn.close:hover { background: rgba(255,92,170,0.22); border-color: rgba(255,140,200,0.45); color: #fff; }
 .win-btn svg { display: block; }
-body.maximized .shell { inset: 0; border-radius: 0; border-color: transparent; box-shadow: none; }
+body.maximized .shell { border-radius: 0; border-color: transparent; box-shadow: none; }
+body.maximized .rz { display: none; }
+
+/* Maniglie invisibili sui bordi per ridimensionare */
+.rz { position: fixed; z-index: 50; }
+.rz-n, .rz-s { left: 18px; right: 18px; height: 6px; cursor: ns-resize; }
+.rz-n { top: 0; } .rz-s { bottom: 0; }
+.rz-e, .rz-w { top: 18px; bottom: 18px; width: 6px; cursor: ew-resize; }
+.rz-e { right: 0; } .rz-w { left: 0; }
+.rz-ne, .rz-nw, .rz-se, .rz-sw { width: 18px; height: 18px; }
+.rz-ne { top: 0; right: 0; cursor: nesw-resize; } .rz-sw { bottom: 0; left: 0; cursor: nesw-resize; }
+.rz-nw { top: 0; left: 0; cursor: nwse-resize; } .rz-se { bottom: 0; right: 0; cursor: nwse-resize; }
 body.maximized .shell::before { display: none; }
 
 /* Avviso */
