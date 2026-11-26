@@ -8,15 +8,27 @@
 <script src="app.js" defer></script>
 </head>
 <body>
-<div class="sky" aria-hidden="true">
-  <div class="sky-sun"></div>
-  <div class="sky-cyan"></div>
-  <div class="sky-horizon"></div>
-</div>
-
 <div class="shell">
+  <div class="sky" aria-hidden="true">
+    <div class="sky-sun"></div>
+    <div class="sky-cyan"></div>
+    <div class="sky-horizon"></div>
+  </div>
+  <div class="titlebar" data-tauri-drag-region>
+    <div class="win-controls">
+      <button type="button" class="win-btn" id="win-min" aria-label="Riduci a icona" title="Riduci a icona">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" class="win-btn" id="win-max" aria-label="Ingrandisci" title="Ingrandisci">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2.5" width="7" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+      <button type="button" class="win-btn close" id="win-close" aria-label="Chiudi" title="Chiudi">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
   <aside class="side">
-    <div class="brand">
+    <div class="brand" data-tauri-drag-region="deep">
       <img src="img/penmark-icon.svg" width="38" height="38" alt="">
       <div>
         <div class="brand-name">PenMark</div>
@@ -63,7 +75,7 @@
             </div>
             <label class="field">
               <span class="field-label">Nota (facoltativa)</span>
-              <input type="text" id="sign-note" maxlength="300" placeholder="Per esempio: prima versione, luci ritoccate…">
+              <input type="text" id="sign-note" maxlength="300" autocomplete="off" placeholder="Per esempio: prima versione, luci ritoccate…">
             </label>
             <div class="signer">Firmi come <strong id="sign-author">—</strong></div>
             <button type="button" class="btn-primary" id="sign-go">Firma il file</button>
@@ -191,5 +203,14 @@
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   </main>
 </div>
+<!-- Bordi per ridimensionare la finestra senza cornice di Windows -->
+<div class="rz rz-n" data-resize="North" aria-hidden="true"></div>
+<div class="rz rz-s" data-resize="South" aria-hidden="true"></div>
+<div class="rz rz-e" data-resize="East" aria-hidden="true"></div>
+<div class="rz rz-w" data-resize="West" aria-hidden="true"></div>
+<div class="rz rz-ne" data-resize="NorthEast" aria-hidden="true"></div>
+<div class="rz rz-nw" data-resize="NorthWest" aria-hidden="true"></div>
+<div class="rz rz-se" data-resize="SouthEast" aria-hidden="true"></div>
+<div class="rz rz-sw" data-resize="SouthWest" aria-hidden="true"></div>
 </body>
 </html>

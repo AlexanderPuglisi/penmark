@@ -202,6 +202,25 @@ function wire() {
     catch (e) { toast(String(e), true); }
   });
 
+  // Finestra senza cornice di Windows: i tre pulsanti nella carta di vetro.
+  const win = T.window.getCurrentWindow();
+  $("win-min").addEventListener("click", () => win.minimize());
+  $("win-max").addEventListener("click", () => win.toggleMaximize());
+  $("win-close").addEventListener("click", () => win.close());
+  const syncMax = async () => {
+    const max = await win.isMaximized();
+    document.body.classList.toggle("maximized", max);
+    $("win-max").setAttribute("aria-label", max ? "Ripristina" : "Ingrandisci");
+    $("win-max").title = max ? "Ripristina" : "Ingrandisci";
+  };
+  for (const h of document.querySelectorAll("[data-resize]")) {
+    h.addEventListener("mousedown", (e) => {
+      if (e.button === 0) { e.preventDefault(); win.startResizeDragging(h.dataset.resize); }
+    });
+  }
+  win.onResized(syncMax);
+  syncMax();
+
   // Trascina e rilascia: la finestra riceve i percorsi veri dei file.
   T.webview.getCurrentWebview().onDragDropEvent((ev) => {
     const p = ev.payload;
