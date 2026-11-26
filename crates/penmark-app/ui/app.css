@@ -42,9 +42,6 @@ input, .key-hex, .facts dd, .result-meta, .chosen-path { user-select: text; }
   background: radial-gradient(closest-side, rgba(255,92,170,0.55), rgba(140,70,255,0.28) 55%, rgba(7,5,15,0) 100%); }
 .sky-cyan { position: absolute; right: -180px; top: -220px; width: 620px; height: 620px;
   background: radial-gradient(closest-side, rgba(70,220,255,0.20), rgba(7,5,15,0)); }
-.sky-horizon { position: absolute; left: 0; right: 0; bottom: 19%; height: 1px;
-  background: linear-gradient(90deg, rgba(127,232,255,0), rgba(255,140,200,0.6), rgba(127,232,255,0)); }
-
 /* Guscio in vetro */
 .shell {
   /* La finestra è trasparente: il suo bordo visibile è questa carta. */
