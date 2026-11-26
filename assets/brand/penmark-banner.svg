@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <title>PenMark — the mark of your pen. by Alexander Puglisi</title>
+  <defs>
+    <radialGradient id="sunset" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff5caa" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#8c46ff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#07050f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#46dcff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#07050f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="horizon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7fe8ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff8cc8" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#7fe8ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.075"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8cc8" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#7fe8ff" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5caa"/>
+      <stop offset="0.55" stop-color="#b77bff"/>
+      <stop offset="1" stop-color="#7fe8ff"/>
+    </linearGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d1238"/>
+      <stop offset="1" stop-color="#0b0716"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="1" r="0.75">
+      <stop offset="0" stop-color="#ff5caa" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff5caa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="#07050f"/>
+  <ellipse cx="640" cy="720" rx="820" ry="460" fill="url(#sunset)"/>
+  <circle cx="1170" cy="20" r="330" fill="url(#cyan)"/>
+  <rect x="0" y="512" width="1280" height="1" fill="url(#horizon)"/>
+
+  <rect x="190" y="160" width="900" height="300" rx="36" fill="url(#glass)"/>
+  <rect x="190.5" y="160.5" width="899" height="299" rx="35.5" fill="none" stroke="url(#rim)" stroke-width="1"/>
+
+  <g transform="translate(250 210) scale(0.78125)">
+    <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#night)"/>
+    <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#sun)"/>
+    <rect x="8.75" y="8.75" width="238.5" height="238.5" rx="55.25" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
+    <path d="M58 150c22-46 38-62 46-46s-8 46 12 38 20-58 36-50-4 46 16 42 20-20 30-24" fill="none" stroke="url(#stroke)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M62 184h132" stroke="#ffffff" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <text x="500" y="302" font-family="Sora" font-weight="300" font-size="92" letter-spacing="3" fill="#f3eefc">PenMark</text>
+  <text x="504" y="352" font-family="Inter" font-weight="400" font-size="26" fill="#d6cdf0">The mark of your pen.</text>
+  <text x="504" y="394" font-family="Inter" font-weight="400" font-size="18" letter-spacing="0.6" fill="#a99cc9">by Alexander Puglisi</text>
+</svg>

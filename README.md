@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/brand/penmark-banner.png" alt="PenMark — the mark of your pen. by Alexander Puglisi" width="860"></p>
+
 # PenMark
 
 **The mark of your pen.** Sign what you create — 3D models, images, video, audio, documents and code — and prove it is yours and since when.
@@ -24,3 +26,4 @@ Stato: in sviluppo, ancora niente da scaricare.
 ## License
 
 Apache License 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+The bundled fonts Sora and Inter are under the SIL Open Font License 1.1 (see `assets/fonts`).

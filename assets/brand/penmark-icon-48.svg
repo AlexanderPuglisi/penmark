@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 256 256">
+  <title>PenMark</title>
+  <defs>
+    <linearGradient id="stroke" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5caa"/>
+      <stop offset="1" stop-color="#7fe8ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="#160d2c"/>
+  <path d="M58 150c22-46 38-62 46-46s-8 46 12 38 20-58 36-50-4 46 16 42 20-20 30-24" fill="none" stroke="url(#stroke)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

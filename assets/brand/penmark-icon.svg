@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>PenMark</title>
+  <defs>
+    <linearGradient id="stroke" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5caa"/>
+      <stop offset="0.55" stop-color="#b77bff"/>
+      <stop offset="1" stop-color="#7fe8ff"/>
+    </linearGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d1238"/>
+      <stop offset="1" stop-color="#0b0716"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="1" r="0.75">
+      <stop offset="0" stop-color="#ff5caa" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff5caa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#night)"/>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#sun)"/>
+  <rect x="8.75" y="8.75" width="238.5" height="238.5" rx="55.25" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
+  <path d="M58 150c22-46 38-62 46-46s-8 46 12 38 20-58 36-50-4 46 16 42 20-20 30-24" fill="none" stroke="url(#stroke)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M62 184h132" stroke="#ffffff" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+</svg>
