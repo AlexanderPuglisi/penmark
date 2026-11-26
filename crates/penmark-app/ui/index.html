@@ -14,9 +14,24 @@
   <div class="sky-horizon"></div>
 </div>
 
+<div class="drag-edge" data-tauri-drag-region></div>
+
 <div class="shell">
+  <div class="titlebar" data-tauri-drag-region>
+    <div class="win-controls">
+      <button type="button" class="win-btn" id="win-min" aria-label="Riduci a icona" title="Riduci a icona">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" class="win-btn" id="win-max" aria-label="Ingrandisci" title="Ingrandisci">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2.5" width="7" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+      <button type="button" class="win-btn close" id="win-close" aria-label="Chiudi" title="Chiudi">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
   <aside class="side">
-    <div class="brand">
+    <div class="brand" data-tauri-drag-region="deep">
       <img src="img/penmark-icon.svg" width="38" height="38" alt="">
       <div>
         <div class="brand-name">PenMark</div>

@@ -1,10 +1,14 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "The only window of PenMark: core events, drag and drop, and the file picker. No shell, no file system plugin, no network.",
+  "description": "The only window of PenMark: core events, drag and drop, moving, minimizing, maximizing and closing its own frameless window, and the file picker. No shell, no file system plugin, no network.",
   "windows": ["main"],
   "permissions": [
     "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
     "dialog:allow-open"
   ]
 }

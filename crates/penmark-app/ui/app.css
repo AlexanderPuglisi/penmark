@@ -31,6 +31,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 [hidden] { display: none !important; }
+/* Un'app, non una pagina: si seleziona solo ciò che serve copiare. */
+body { user-select: none; cursor: default; }
+input, .key-hex, .facts dd, .result-meta, .chosen-path { user-select: text; }
 .mono { font-family: var(--mono); }
 
 /* Cielo */
@@ -188,6 +191,20 @@ input[type="text"]:focus { border-color: rgba(127,232,255,0.6); outline: none; b
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); align-self: stretch; }
 .key-folder { font-size: 12px; color: var(--faint); overflow-wrap: anywhere; }
 #key-create { align-self: flex-start; }
+
+/* Cornice: niente barra di Windows, la carta di vetro è il bordo */
+.drag-edge { position: fixed; inset: 0; z-index: 0; }
+.shell { z-index: 1; }
+.titlebar { position: absolute; left: 232px; right: 0; top: 0; height: 40px; z-index: 5;
+  display: flex; justify-content: flex-end; align-items: flex-start; }
+.win-controls { display: flex; gap: 6px; padding: 10px 12px 0 0; }
+.win-btn { width: 30px; height: 26px; border-radius: 9px; border: 1px solid transparent; background: transparent;
+  color: var(--faint); display: grid; place-items: center; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.win-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: var(--text); }
+.win-btn.close:hover { background: rgba(255,92,170,0.22); border-color: rgba(255,140,200,0.45); color: #fff; }
+.win-btn svg { display: block; }
+body.maximized .shell { inset: 0; border-radius: 0; border-color: transparent; box-shadow: none; }
+body.maximized .shell::before { display: none; }
 
 /* Avviso */
 .toast { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); max-width: 620px;
