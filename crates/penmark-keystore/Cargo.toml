@@ -1,0 +1,20 @@
+[package]
+name = "penmark-keystore"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+penmark-core = { version = "0.1.0", path = "../penmark-core" }
+thiserror = "2.0.21"
+windows-sys = { version = "0.61.2", features = ["Win32_Security_Cryptography", "Win32_Foundation"] }
+zeroize = "1.9.2"
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+tempfile = "3.27.0"
