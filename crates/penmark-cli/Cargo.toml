@@ -1,0 +1,24 @@
+[package]
+name = "penmark-cli"
+description = "Sign and verify files with Penmark"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+clap = { version = "4.6.10", features = ["derive"] }
+penmark-core = { version = "0.1.0", path = "../penmark-core" }
+penmark-keystore = { version = "0.1.0", path = "../penmark-keystore" }
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[[bin]]
+name = "penmark"
+path = "src/main.rs"
