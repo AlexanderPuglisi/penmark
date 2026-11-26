@@ -20,6 +20,6 @@ pub mod verify;
 pub use digest::{FileDigest, Measured, digest_file, digest_reader};
 pub use error::{Error, Result};
 pub use keys::{KeyId, PublicKey, SecretKey};
-pub use sidecar::{MAX_SIDECAR_BYTES, Signed, read_sidecar, sidecar_path};
+pub use sidecar::{MAX_SIDECAR_BYTES, Signed, read_sidecar, sidecar_path, write_sidecar};
 pub use statement::{FORMAT, Statement, now_utc_rfc3339};
 pub use verify::{Verdict, verify};
