@@ -1,0 +1,30 @@
+[package]
+name = "penmark-app"
+description = "PenMark desktop app for Windows"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "2.7", features = [] }
+
+[dependencies]
+penmark-core = { version = "0.1.0", path = "../penmark-core" }
+penmark-keystore = { version = "0.1.0", path = "../penmark-keystore" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2.12", features = [] }
+tauri-plugin-dialog = "2.8"
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "penmark-app"
+path = "src/main.rs"

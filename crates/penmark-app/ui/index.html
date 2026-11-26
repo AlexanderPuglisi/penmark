@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PenMark</title>
+<link rel="stylesheet" href="app.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="sky-sun"></div>
+  <div class="sky-cyan"></div>
+  <div class="sky-horizon"></div>
+</div>
+
+<div class="shell">
+  <aside class="side">
+    <div class="brand">
+      <img src="img/penmark-icon.svg" width="38" height="38" alt="">
+      <div>
+        <div class="brand-name">PenMark</div>
+        <div class="brand-by">by Alexander Puglisi</div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Sezioni">
+      <button type="button" class="nav-item" data-view="sign" aria-current="page">Firma</button>
+      <button type="button" class="nav-item" data-view="verify">Verifica</button>
+      <button type="button" class="nav-item" data-view="key">La mia chiave</button>
+    </nav>
+    <div class="side-foot"><span class="dot"></span><span id="side-status">Offline</span></div>
+  </aside>
+
+  <main class="main">
+
+    <!-- Firma -->
+    <section class="view" id="view-sign" aria-labelledby="t-sign">
+      <header class="head">
+        <div class="eyebrow pink">Firma un file</div>
+        <h1 id="t-sign">Rendi tuo ciò che crei.</h1>
+        <p>Trascina un file: PenMark registra il tuo nome, la data e un'impronta unica. Se qualcuno lo cambia anche di poco, si vede.</p>
+      </header>
+
+      <div class="sign-grid">
+        <div class="drop" id="sign-drop">
+          <div class="drop-line" aria-hidden="true"></div>
+          <div class="drop-empty" id="sign-empty">
+            <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="dg1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff5caa"/><stop offset="1" stop-color="#7fe8ff"/></linearGradient></defs><rect x="14" y="8" width="36" height="46" rx="7" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.6"/><path d="M21 42c3-6 5-8 6-6s-1 6 2 5 3-8 5-7-1 6 2 6 3-3 4-3" fill="none" stroke="url(#dg1)" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="drop-title">Trascina qui il tuo file</div>
+            <div class="drop-text">Qualsiasi formato: .blend, .png, .mp4, .glb, .wav, .pdf, codice. La firma va accanto, in un piccolo file .penmark.</div>
+            <button type="button" class="btn-light" id="sign-pick">Scegli un file</button>
+          </div>
+          <div class="drop-chosen" id="sign-chosen" hidden>
+            <div class="chosen-row">
+              <div class="chosen-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bff6fb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+              </div>
+              <div class="chosen-text">
+                <div class="chosen-name" id="sign-name"></div>
+                <div class="chosen-path" id="sign-path"></div>
+              </div>
+              <button type="button" class="btn-ghost" id="sign-change">Cambia</button>
+            </div>
+            <label class="field">
+              <span class="field-label">Nota (facoltativa)</span>
+              <input type="text" id="sign-note" maxlength="300" placeholder="Per esempio: prima versione, luci ritoccate…">
+            </label>
+            <div class="signer">Firmi come <strong id="sign-author">—</strong></div>
+            <button type="button" class="btn-primary" id="sign-go">Firma il file</button>
+          </div>
+        </div>
+
+        <div class="side-col">
+          <div class="card" id="last-card">
+            <div class="card-top">
+              <span class="label">Appena firmato</span>
+              <span class="pill-ok" id="last-pill" hidden><span class="pill-dot"></span>Integro</span>
+            </div>
+            <div class="card-empty" id="last-empty">Qui compare il riepilogo del file che firmi.</div>
+            <div id="last-body" hidden>
+              <div class="card-file" id="last-name"></div>
+              <dl class="facts">
+                <dt>Autore</dt><dd id="last-author"></dd>
+                <dt>Data</dt><dd id="last-date"></dd>
+                <dt>Firma</dt><dd>accanto, in .penmark</dd>
+                <dt>Impronta</dt><dd class="mono" id="last-hash"></dd>
+              </dl>
+            </div>
+          </div>
+          <div class="card soft">
+            <span class="label">Di recente</span>
+            <ul class="recent" id="recent">
+              <li class="recent-empty">Ancora niente in questa sessione.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verifica -->
+    <section class="view" id="view-verify" aria-labelledby="t-verify" hidden>
+      <header class="head">
+        <div class="eyebrow cyan">Verifica</div>
+        <h1 id="t-verify">Di chi è questo file?</h1>
+        <p>Chiunque può controllare un file firmato. Non serve un account e non serve internet.</p>
+      </header>
+
+      <div class="verify-drop" id="verify-drop">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#cdbdff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="m7.5 8.5 4.5-4.5 4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+        <div class="vd-text">
+          <div class="vd-title">Trascina qui il file ricevuto</div>
+          <div class="vd-sub">Va bene anche il suo .penmark: servono tutti e due nella stessa cartella.</div>
+        </div>
+        <button type="button" class="btn-ghost" id="verify-pick">Scegli…</button>
+      </div>
+
+      <div class="result" id="result" hidden>
+        <div class="result-icon" id="result-icon" aria-hidden="true"></div>
+        <div class="result-body">
+          <div class="result-title" id="result-title"></div>
+          <div class="result-sub" id="result-sub"></div>
+          <div class="result-meta mono" id="result-meta"></div>
+        </div>
+      </div>
+
+      <div class="cases" id="cases">
+        <div class="case case-pink">
+          <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" fill="none" stroke="#ff9fcd" stroke-width="1.6"/><path d="M18 10v10" stroke="#ff9fcd" stroke-width="2.6" stroke-linecap="round"/><circle cx="18" cy="25.5" r="1.7" fill="#ff9fcd"/></svg>
+          <div>
+            <div class="case-title">Se il file è stato cambiato</div>
+            <div class="case-text">«Firmato, ma modificato dopo la firma.» Si vede subito che non è più l'originale.</div>
+          </div>
+        </div>
+        <div class="case case-amber">
+          <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" fill="none" stroke="#ffd98a" stroke-width="1.6"/><circle cx="18" cy="15" r="4.5" fill="none" stroke="#ffd98a" stroke-width="1.8"/><path d="M10.5 27c2-4 5-5.5 7.5-5.5s5.5 1.5 7.5 5.5" fill="none" stroke="#ffd98a" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div>
+            <div class="case-title">Se lo firma qualcun altro</div>
+            <div class="case-text">«Firma vera, ma di una chiave che non conosci.» Il nome lo può scrivere chiunque: conta la chiave.</div>
+          </div>
+        </div>
+      </div>
+
+      <details class="trust">
+        <summary>Controlla con la chiave pubblica di un autore</summary>
+        <label class="field">
+          <span class="field-label">Chiave pubblica (64 caratteri), come l'autore la pubblica</span>
+          <input type="text" id="trust-key" spellcheck="false" autocomplete="off" class="mono">
+        </label>
+      </details>
+    </section>
+
+    <!-- La mia chiave -->
+    <section class="view" id="view-key" aria-labelledby="t-key" hidden>
+      <header class="head">
+        <div class="eyebrow violet">La mia chiave</div>
+        <h1 id="t-key">La tua firma, solo tua.</h1>
+        <p>La chiave segreta resta su questo PC, cifrata con il tuo account Windows. Chiunque può verificare, nessuno può firmare al posto tuo.</p>
+      </header>
+
+      <div class="key-grid">
+        <div class="keycard">
+          <div class="keycard-in">
+            <div class="label">Codice della tua chiave</div>
+            <div class="key-id" id="key-id">—</div>
+            <div class="key-none" id="key-none">Non hai ancora una chiave.</div>
+            <div class="key-pub" id="key-pub-wrap" hidden>
+              <div class="field-label">Chiave pubblica, da pubblicare dove ti trovano</div>
+              <div class="key-hex mono" id="key-hex"></div>
+              <button type="button" class="btn-ghost" id="key-copy">Copia la chiave pubblica</button>
+            </div>
+            <button type="button" class="btn-primary" id="key-create" hidden>Crea la mia chiave</button>
+            <div class="key-folder" id="key-folder"></div>
+          </div>
+        </div>
+
+        <div class="side-col">
+          <div class="card">
+            <label class="field">
+              <span class="label">Il nome con cui firmi</span>
+              <input type="text" id="author-input" maxlength="120" autocomplete="name" placeholder="Alexander Puglisi">
+            </label>
+            <button type="button" class="btn-ghost" id="author-save">Salva il nome</button>
+          </div>
+          <div class="card soft small">
+            <strong>Copia di sicurezza.</strong> Se perdi il PC perdi la chiave: le vecchie firme restano valide, ma non potrai più firmare come te con la stessa chiave. Il salvataggio protetto arriva in una prossima versione.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </main>
+</div>
+</body>
+</html>

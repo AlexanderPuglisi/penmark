@@ -180,6 +180,22 @@ pub fn read_sidecar(path: &Path) -> Result<Signed> {
     Signed::from_json(&text)
 }
 
+/// Writes `<file>.penmark` next to `file` and returns its path.
+/// Never replaces an existing `.penmark`: that case is an
+/// [`std::io::ErrorKind::AlreadyExists`] I/O error.
+pub fn write_sidecar(file: &Path, signed: &Signed) -> Result<PathBuf> {
+    use std::io::Write;
+    let out = sidecar_path(file);
+    let json = signed.to_json()?;
+    let mut f = std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(&out)?;
+    f.write_all(json.as_bytes())?;
+    f.sync_all()?;
+    Ok(out)
+}
+
 const ALGORITHM: &str = "ed25519";
 
 #[derive(Serialize, Deserialize)]
